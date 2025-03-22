@@ -16,7 +16,8 @@ import {
   MdMenu,
   MdClose,
   MdChevronLeft,
-  MdChevronRight
+  MdKeyboardArrowRight,
+  MdArrowRight
 } from 'react-icons/md';
 import { FaBox } from 'react-icons/fa';
 import { SiBlockchaindotcom } from 'react-icons/si';
@@ -114,12 +115,12 @@ const Sidebar: FC = () => {
         <button 
           type="button"
           onClick={toggleCollapse}
-          className="absolute right-6 top-5 transform translate-x-1/2 bg-gray-800 text-white p-1 rounded-full shadow-lg border border-gray-700 hover:bg-gray-700 transition-colors"
+          className={`absolute  top-5 ml-3 transform translate-x-1/2  text-white p-1 rounded-full shadow-lg border  hover:bg-gray-700 transition-colors ${collapsed ? "bg-none right-2 border-none" : "bg-gray-800 right-6 border-gray-700"}`}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          {collapsed ? <MdChevronRight className="text-sm" /> : <MdChevronLeft className="text-sm" />}
+          {collapsed ? <MdKeyboardArrowRight className="text-sm " /> : <MdChevronLeft className="text-sm" />}
         </button>
-        
+      
         {/* Navigation */}
         <nav className="mt-2 px-2 py-2">
           <ul className="space-y-1">
