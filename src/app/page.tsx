@@ -1,3 +1,4 @@
+import RecentTransactions from '@/components/RecentTransactions';
 import { InventoryChart } from './components/inventory-chart';
 import { ProductionStatusChart } from './components/production-status-chart';
 
