@@ -43,19 +43,22 @@ To get a local copy up and running, follow these steps:
 
 The roadmap outlines the future plans for Lumen Logistics:
 
-- **Q1 2025**: 
+- **Q1 2025**:
+
   - Launch the MVP (Minimum Viable Product) with core features.
   - Gather user feedback for improvements.
 
-- **Q2 2025**: 
+- **Q2 2025**:
+
   - Implement advanced analytics for inventory management.
   - Enhance user interface and user experience based on feedback.
 
-- **Q3 2025**: 
+- **Q3 2025**:
+
   - Integrate additional blockchain features for improved security.
   - Expand documentation and tutorials for developers.
 
-- **Q4 2025**: 
+- **Q4 2025**:
   - Launch mobile application version.
   - Explore partnerships with logistics companies for real-world testing.
 
