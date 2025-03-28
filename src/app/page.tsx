@@ -1,6 +1,7 @@
 import RecentTransactions from '@/components/RecentTransactions';
 import { InventoryChart } from './components/inventory-chart';
 import { ProductionStatusChart } from './components/production-status-chart';
+import OnTimeDelivery from './components/onTimeDelivery';
 
 export default function Home() {
   return (
@@ -17,6 +18,10 @@ export default function Home() {
 
             <div className="col-span-2">
               <ProductionStatusChart />
+            </div>
+
+            <div className="col-span-3">
+              <OnTimeDelivery />
             </div>
           </div>
         </div>
