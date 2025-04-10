@@ -1,7 +1,7 @@
-import RecentTransactions from '@/components/RecentTransactions';
 import { InventoryChart } from './components/inventory-chart';
 import { ProductionStatusChart } from './components/production-status-chart';
 import OnTimeDelivery from './components/onTimeDelivery';
+import RecentTransactions from '@/components/organism/RecentTransactions';
 
 export default function Home() {
   return (
