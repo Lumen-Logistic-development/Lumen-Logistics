@@ -70,7 +70,7 @@ const Sidebar: FC = () => {
   };
 
   const navItems = [
-    { href: '/Dashboard', icon: MdDashboard, title: 'Dashboard' },
+    { href: '/dashboard', icon: MdDashboard, title: 'Dashboard' },
     { href: '/inventory', icon: MdInventory, title: 'Inventory' },
     { href: '/production', icon: MdProductionQuantityLimits, title: 'Production' },
     { href: '/logistics', icon: MdLocalShipping, title: 'Logistics' },
