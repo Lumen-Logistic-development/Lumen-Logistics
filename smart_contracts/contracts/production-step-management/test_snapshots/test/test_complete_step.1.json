@@ -59,7 +59,7 @@
           "contract_data": {
             "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
             "key": {
-              "string": "PROD_STEPS_PROD003"
+              "string": "PROD003"
             },
             "durability": "persistent"
           }
@@ -72,7 +72,7 @@
                 "ext": "v0",
                 "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
                 "key": {
-                  "string": "PROD_STEPS_PROD003"
+                  "string": "PROD003"
                 },
                 "durability": "persistent",
                 "val": {
@@ -94,7 +94,7 @@
           "contract_data": {
             "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
             "key": {
-              "string": "STEP_STEP003"
+              "string": "STEP003"
             },
             "durability": "persistent"
           }
@@ -107,7 +107,7 @@
                 "ext": "v0",
                 "contract": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2KM",
                 "key": {
-                  "string": "STEP_STEP003"
+                  "string": "STEP003"
                 },
                 "durability": "persistent",
                 "val": {

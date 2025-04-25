@@ -282,22 +282,77 @@ fn test_multiple_products_workflow() {
     
     // Create steps for each product
     for (p_idx, product) in products.iter().enumerate() {
-        let product_id = String::from_str(&env, product);
+        let product_id = String::from_str(&env, *product);
         
         for s_idx in 0..steps_per_product {
-            let step_id = String::from_str(&env, &format!("{}_{}", product, s_idx));
+            // Use simple naming patterns and if conditions
+            let step_id;
+            if *product == "CHAIR_A" && s_idx == 0 {
+                step_id = String::from_str(&env, "CHAIR_A_0");
+            } else if *product == "CHAIR_A" && s_idx == 1 {
+                step_id = String::from_str(&env, "CHAIR_A_1");
+            } else if *product == "CHAIR_A" && s_idx == 2 {
+                step_id = String::from_str(&env, "CHAIR_A_2");
+            } else if *product == "TABLE_B" && s_idx == 0 {
+                step_id = String::from_str(&env, "TABLE_B_0");
+            } else if *product == "TABLE_B" && s_idx == 1 {
+                step_id = String::from_str(&env, "TABLE_B_1");
+            } else if *product == "TABLE_B" && s_idx == 2 {
+                step_id = String::from_str(&env, "TABLE_B_2");
+            } else if *product == "SHELF_C" && s_idx == 0 {
+                step_id = String::from_str(&env, "SHELF_C_0");
+            } else if *product == "SHELF_C" && s_idx == 1 {
+                step_id = String::from_str(&env, "SHELF_C_1");
+            } else if *product == "SHELF_C" && s_idx == 2 {
+                step_id = String::from_str(&env, "SHELF_C_2");
+            } else {
+                step_id = String::from_str(&env, "UNKNOWN");
+            }
+            
             let start_time = ((p_idx * steps_per_product + s_idx) as u64) * 1000 + 5000;
             
             client.create_step(&step_id, &product_id, &start_time, &responsible.clone());
             
-            // Add some resources to each step
-            let resource_id = String::from_str(&env, &format!("RES_{}_{}", product, s_idx));
+            // Resource IDs also using if conditions
+            let resource_id;
+            if *product == "CHAIR_A" && s_idx == 0 {
+                resource_id = String::from_str(&env, "RES_CHAIR_A_0");
+            } else if *product == "CHAIR_A" && s_idx == 1 {
+                resource_id = String::from_str(&env, "RES_CHAIR_A_1");
+            } else if *product == "CHAIR_A" && s_idx == 2 {
+                resource_id = String::from_str(&env, "RES_CHAIR_A_2");
+            } else if *product == "TABLE_B" && s_idx == 0 {
+                resource_id = String::from_str(&env, "RES_TABLE_B_0");
+            } else if *product == "TABLE_B" && s_idx == 1 {
+                resource_id = String::from_str(&env, "RES_TABLE_B_1");
+            } else if *product == "TABLE_B" && s_idx == 2 {
+                resource_id = String::from_str(&env, "RES_TABLE_B_2");
+            } else if *product == "SHELF_C" && s_idx == 0 {
+                resource_id = String::from_str(&env, "RES_SHELF_C_0");
+            } else if *product == "SHELF_C" && s_idx == 1 {
+                resource_id = String::from_str(&env, "RES_SHELF_C_1");
+            } else if *product == "SHELF_C" && s_idx == 2 {
+                resource_id = String::from_str(&env, "RES_SHELF_C_2");
+            } else {
+                resource_id = String::from_str(&env, "RES_UNKNOWN");
+            }
+            
             client.add_resource(&step_id, &resource_id, &((s_idx as u32 + 1) * 5));
             
             // Complete some steps
             if s_idx % 2 == 0 {
                 let quality = String::from_str(&env, "Good quality");
-                let notes = String::from_str(&env, &format!("Step {} completed", s_idx));
+                
+                // Notes also with if conditions
+                let notes;
+                if s_idx == 0 {
+                    notes = String::from_str(&env, "Step 0 completed");
+                } else if s_idx == 2 {
+                    notes = String::from_str(&env, "Step 2 completed");
+                } else {
+                    notes = String::from_str(&env, "Step completed");
+                }
+                
                 client.complete_step(
                     &step_id,
                     &(start_time + 500),
@@ -314,7 +369,7 @@ fn test_multiple_products_workflow() {
     
     // Test listing by product
     for product in products.iter() {
-        let product_id = String::from_str(&env, product);
+        let product_id = String::from_str(&env, *product);
         let product_steps = client.list_product_steps(&product_id);
         assert_eq!(product_steps.len(), steps_per_product as u32);
     }

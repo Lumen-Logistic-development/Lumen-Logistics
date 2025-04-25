@@ -2,8 +2,6 @@ use soroban_sdk::{Env, String, Vec, vec};
 use crate::types::ProductionStep;
 
 // Storage keys
-const STEP_PREFIX: &str = "STEP_";
-const PRODUCT_STEPS_PREFIX: &str = "PROD_STEPS_";
 const ALL_STEPS_KEY: &str = "ALL_STEPS";
 
 // Save a production step
@@ -11,9 +9,8 @@ pub fn save_production_step(env: &Env, step: &ProductionStep) {
     let step_id = &step.step_id;
     let product_id = &step.product_id;
     
-    // Save the step
-    let key = storage_key(env, STEP_PREFIX, step_id);
-    env.storage().persistent().set(&key, step);
+    // Use the step_id directly as the key
+    env.storage().persistent().set(step_id, step);
     
     // Update steps by product
     update_product_steps(env, product_id, step_id);
@@ -24,8 +21,7 @@ pub fn save_production_step(env: &Env, step: &ProductionStep) {
 
 // Get a production step by ID
 pub fn get_production_step(env: &Env, step_id: &String) -> Option<ProductionStep> {
-    let key = storage_key(env, STEP_PREFIX, step_id);
-    env.storage().persistent().get(&key)
+    env.storage().persistent().get(step_id)
 }
 
 // Get all step IDs
@@ -36,8 +32,8 @@ pub fn get_all_step_ids(env: &Env) -> Vec<String> {
 
 // Get steps for a specific product
 pub fn get_steps_for_product(env: &Env, product_id: &String) -> Vec<String> {
-    let key = storage_key(env, PRODUCT_STEPS_PREFIX, product_id);
-    env.storage().persistent().get(&key).unwrap_or_else(|| vec![env])
+    // Use product_id directly as the key for product steps
+    env.storage().persistent().get(product_id).unwrap_or_else(|| vec![env])
 }
 
 // Helper to update the list of all steps
@@ -59,8 +55,7 @@ fn update_all_steps(env: &Env, step_id: &String) {
 
 // Helper to update the steps of a product
 fn update_product_steps(env: &Env, product_id: &String, step_id: &String) {
-    let key = storage_key(env, PRODUCT_STEPS_PREFIX, product_id);
-    let mut steps = env.storage().persistent().get::<_, Vec<String>>(&key)
+    let mut steps = env.storage().persistent().get::<_, Vec<String>>(product_id)
         .unwrap_or_else(|| vec![env]);
     
     // Check if the step is already associated with this product
@@ -72,17 +67,5 @@ fn update_product_steps(env: &Env, product_id: &String, step_id: &String) {
     
     // If it doesn't exist, add it
     steps.push_back(step_id.clone());
-    env.storage().persistent().set(&key, &steps);
-}
-
-// Helper to build storage keys
-fn storage_key(env: &Env, prefix: &str, id: &String) -> String {
-    // Convert to a standard Rust string
-    let id_str = id.to_string();
-    
-    // Build the prefix + id
-    let key_str = format!("{}{}", prefix, id_str);
-    
-    // Convert to Soroban String
-    String::from_str(env, &key_str)
+    env.storage().persistent().set(product_id, &steps);
 } 
