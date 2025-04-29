@@ -9,10 +9,9 @@ extern crate std;
 mod test_setup {
     use super::*;
 
-    pub fn setup_contract() -> (RegistrarContractClient<'static>, Address, Address, Env) {
+    pub fn setup_contract() -> (RegistrarContractClient<'static>, Address, Env) {
         let env = Env::default();
         let admin = Address::generate(&env);
-        let fee_collector = Address::generate(&env);
         let contract_id = env.register(RegistrarContract, {});
         let client = RegistrarContractClient::new(&env, &contract_id);
 
@@ -21,7 +20,7 @@ mod test_setup {
         // Initialize the contract
         client.initialize(&admin);
 
-        (client, admin, fee_collector, env)
+        (client, admin, env)
     }
 }
 
@@ -31,7 +30,7 @@ mod test_registrar {
     #[test]
     #[should_panic(expected = "Error(Contract, #3)")]
     fn test_initialize() {
-        let (client, admin, _user, _env) = test_setup::setup_contract();
+        let (client, admin, _env) = test_setup::setup_contract();
 
         // Check admin
         let admin_res = client.get_admin();
@@ -46,7 +45,7 @@ mod test_registrar {
 
     #[test]
     fn test_add_material() {
-        let (client, _admin, _user, env) = test_setup::setup_contract();
+        let (client, _admin, env) = test_setup::setup_contract();
 
         let name = String::from_str(&env, "Steel");
         let supplier = Address::generate(&env);
@@ -74,7 +73,7 @@ mod test_registrar {
 
     #[test]
     fn test_update_material() {
-        let (client, _admin, _user, env) = test_setup::setup_contract();
+        let (client, _admin, env) = test_setup::setup_contract();
 
         let name = String::from_str(&env, "Steel");
         let supplier = Address::generate(&env);
@@ -107,7 +106,7 @@ mod test_registrar {
 
     #[test]
     fn test_list_materials() {
-        let (client, _admin, _user, env) = test_setup::setup_contract();
+        let (client, _admin, env) = test_setup::setup_contract();
 
         let empty_list_res = client.list_materials(&0, &10);
         assert_eq!(empty_list_res.len(), 0);

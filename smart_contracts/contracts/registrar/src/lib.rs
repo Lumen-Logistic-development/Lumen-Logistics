@@ -7,14 +7,28 @@ mod types;
 use crate::interface::RegistrarTrait;
 use crate::types::{DataKey, Error, MaterialRecord};
 
-// Define the contract struct
+/// Registrar Contract
+///
+/// This contract manages the registration and tracking of raw materials,
+/// including details like supplier, batch, quantity, and certification.
+/// It provides functionalities to add, update, retrieve, and list material records.
+/// Access control is enforced, typically requiring administrative privileges for modifications.
 #[contract]
 pub struct RegistrarContract;
 
 // Define the contract implementation
 #[contractimpl]
 impl RegistrarTrait for RegistrarContract {
-    // Initializes the contract, setting the admin. Can only be called once.
+    /// Initializes the contract with the specified admin address.
+    ///
+    /// # Arguments
+    ///
+    /// * `env` - The Soroban environment.
+    /// * `admin` - The address to be set as the administrator.
+    ///
+    /// # Panics
+    ///
+    /// Panics with `Error::AlreadyExists` if the contract has already been initialized.
     fn initialize(env: Env, admin: Address) {
         if env.storage().instance().has(&DataKey::Admin) {
             panic_with_error!(&env, Error::AlreadyExists);
@@ -23,7 +37,16 @@ impl RegistrarTrait for RegistrarContract {
         env.storage().instance().set(&DataKey::RecordCounter, &0u64);
     }
 
-    // Retrieves the admin address.
+    /// Retrieves the administrator address stored in the contract.
+    ///
+    /// # Arguments
+    ///
+    /// * `env` - The Soroban environment.
+    ///
+    /// # Returns
+    ///
+    /// Returns `Ok(Address)` containing the admin address if found,
+    /// otherwise returns `Err(Error::NotFound)`.
     fn get_admin(env: Env) -> Result<Address, Error> {
         env.storage()
             .instance()
@@ -31,7 +54,27 @@ impl RegistrarTrait for RegistrarContract {
             .ok_or(Error::NotFound)
     }
 
-    // Adds a new raw material record.
+    /// Adds a new raw material record to the registrar.
+    ///
+    /// Requires authorization from the contract's admin.
+    /// Basic input validation is performed (name, batch cannot be empty, quantity > 0).
+    /// Assigns a unique ID to the new record based on an internal counter.
+    ///
+    /// # Arguments
+    ///
+    /// * `env` - The Soroban environment.
+    /// * `name` - The name of the material.
+    /// * `supplier` - The address of the supplier.
+    /// * `batch` - The batch identifier.
+    /// * `quantity` - The quantity of the material.
+    /// * `certification` - Certification details or identifier.
+    ///
+    /// # Returns
+    ///
+    /// Returns `Ok(u64)` containing the unique ID assigned to the new record upon success.
+    /// Returns `Err(Error::InvalidInput)` if validation fails.
+    /// Returns `Err(Error::NotFound)` if the admin is not set (should not happen after initialization).
+    /// May implicitly panic if authorization fails (`require_auth`).
     fn add_material(
         env: Env,
         name: String,
@@ -78,7 +121,28 @@ impl RegistrarTrait for RegistrarContract {
         Ok(id)
     }
 
-    // Updates an existing raw material record.
+    /// Updates an existing raw material record identified by its ID.
+    ///
+    /// Requires authorization from the contract's admin.
+    /// Only the fields provided in the `Option` arguments are updated.
+    /// Performs basic validation on updated fields (name, batch cannot be empty, quantity > 0).
+    ///
+    /// # Arguments
+    ///
+    /// * `env` - The Soroban environment.
+    /// * `id` - The unique ID of the material record to update.
+    /// * `name` - Optional new name for the material.
+    /// * `supplier` - Optional new supplier address.
+    /// * `batch` - Optional new batch identifier.
+    /// * `quantity` - Optional new quantity. Cannot be updated to 0.
+    /// * `certification` - Optional new certification details.
+    ///
+    /// # Returns
+    ///
+    /// Returns `Ok(MaterialRecord)` containing the updated record upon success.
+    /// Returns `Err(Error::NotFound)` if no record exists with the given `id`.
+    /// Returns `Err(Error::InvalidInput)` if validation fails for any updated field.
+    /// May implicitly panic if authorization fails (`require_auth`).
     fn update_material(
         env: Env,
         id: u64,
@@ -134,7 +198,17 @@ impl RegistrarTrait for RegistrarContract {
         Ok(record)
     }
 
-    // Retrieves a raw material record by its ID.
+    /// Retrieves a raw material record by its unique ID.
+    ///
+    /// # Arguments
+    ///
+    /// * `env` - The Soroban environment.
+    /// * `id` - The unique ID of the material record to retrieve.
+    ///
+    /// # Returns
+    ///
+    /// Returns `Ok(MaterialRecord)` containing the record if found.
+    /// Returns `Err(Error::NotFound)` if no record exists with the given `id`.
     fn get_material(env: Env, id: u64) -> Result<MaterialRecord, Error> {
         let data_key = DataKey::MaterialRecord(id);
         env.storage()
@@ -143,7 +217,17 @@ impl RegistrarTrait for RegistrarContract {
             .ok_or(Error::NotFound)
     }
 
-    // NEW: Implementation for retrieving the total count.
+    /// Retrieves the total number of material records stored in the contract.
+    ///
+    /// This count represents the next ID that will be assigned.
+    ///
+    /// # Arguments
+    ///
+    /// * `env` - The Soroban environment.
+    ///
+    /// # Returns
+    ///
+    /// Returns `u64` representing the total count of records. Defaults to 0 if none exist.
     fn get_material_count(env: Env) -> u64 {
         env.storage()
             .instance()
@@ -151,7 +235,22 @@ impl RegistrarTrait for RegistrarContract {
             .unwrap_or(0)
     }
 
-    // NEW: Implementation for retrieving a paginated list.
+    /// Retrieves a paginated list of material records.
+    ///
+    /// Fetches records based on their sequential IDs, starting from `skip`
+    /// and taking up to `take` records.
+    ///
+    /// # Arguments
+    ///
+    /// * `env` - The Soroban environment.
+    /// * `skip` - The number of records to skip (starting from ID 0).
+    /// * `take` - The maximum number of records to retrieve.
+    ///
+    /// # Returns
+    ///
+    /// Returns `Ok(Vec<MaterialRecord>)` containing the requested records.
+    /// The vector might be smaller than `take` if the end of the records is reached.
+    /// Returns an empty vector if `skip` is greater than or equal to the total count.
     fn list_materials(env: Env, skip: u32, take: u32) -> Result<Vec<MaterialRecord>, Error> {
         let count = Self::get_material_count(env.clone());
         let mut records = vec![&env];
