@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { SiBlockchaindotcom } from "react-icons/si";
 import { FiTrendingUp, FiTrendingDown } from "react-icons/fi";
+import RecentTransactions from "../../components/organism/recentTransactions";
 
 const Dashboard: FC = () => {
   // Mock data - replace with your actual data sources
@@ -60,7 +61,7 @@ const Dashboard: FC = () => {
 
       {/* Overview Section */}
       <section className="mb-8">
-        <div className=" space-x-2 bg-[#27272a] p-2 rounded-lg inline-block mb-5">
+        <div className="space-x-2 bg-[#27272a] p-2 rounded-lg inline-block mb-5">
           <button className="px-4 py-2 text-white bg-neutral-900 rounded-md">
             Overview
           </button>
@@ -96,8 +97,7 @@ const Dashboard: FC = () => {
                 </span>
               </div>
               <p className="text-xs text-gray-500 mt-1">
-                from{" "}
-                {metric.title.includes("Month") ? "last month" : "last week"}
+                from {metric.title.includes("Month") ? "last month" : "last week"}
               </p>
             </div>
           ))}
@@ -163,14 +163,6 @@ const Dashboard: FC = () => {
               />
             ))}
           </div>
-
-          <div className="flex justify-between mt-2">
-            {productionStatus.map((status, index) => (
-              <span key={index} className="text-xs text-gray-500">
-                {status.name}
-              </span>
-            ))}
-          </div>
         </section>
       </div>
 
@@ -182,11 +174,7 @@ const Dashboard: FC = () => {
         <p className="text-gray-600 mb-4">
           Latest transactions recorded on Stellar blockchain
         </p>
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <p className="text-center text-gray-500">
-            Blockchain transaction data visualization would go here
-          </p>
-        </div>
+        <RecentTransactions transactions={[]} />
       </section>
 
       {/* Supply Chain Visibility Section */}
