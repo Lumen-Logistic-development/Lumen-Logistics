@@ -21,6 +21,7 @@ import {
 } from 'react-icons/md';
 import { FaBox } from 'react-icons/fa';
 import { SiBlockchaindotcom } from 'react-icons/si';
+import { ThemeToggle } from '@/components/theme/theme-toggle';
 
 interface NavItemProps {
   href: string;
@@ -38,8 +39,8 @@ const NavItem: FC<NavItemProps> = ({ href, icon: Icon, title, isActive, collapse
       onClick={onClick}
       className={`flex items-center ${collapsed ? 'justify-center' : 'space-x-3'} px-4 py-3 rounded-lg transition-colors ${
         isActive 
-          ? 'bg-blue-600 text-white' 
-          : 'text-gray-300 hover:bg-gray-800'
+          ? 'bg-primary text-primary-foreground' 
+          : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
       }`}
       aria-current={isActive ? 'page' : undefined}
       title={collapsed ? title : undefined}
@@ -98,7 +99,7 @@ const Sidebar: FC = () => {
       <button
         type="button"
         onClick={toggleSidebar}
-        className="md:hidden fixed top-4 left-4 z-40 p-2 rounded-md bg-gray-900 text-white"
+        className="md:hidden fixed top-4 left-4 z-40 p-2 rounded-md bg-primary text-primary-foreground"
         aria-expanded={isOpen}
         aria-controls="sidebar"
       >
@@ -109,25 +110,25 @@ const Sidebar: FC = () => {
       {/* Sidebar */}
       <aside
         id="sidebar"
-        className={`fixed top-0 left-0 z-30 h-full ${collapsed ? 'w-16' : 'w-64'} bg-gray-900 transform transition-all duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 z-30 h-full ${collapsed ? 'w-16' : 'w-64'} bg-sidebar text-sidebar-foreground transform transition-all duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
         aria-label="Sidebar navigation"
       >
         {/* Logo */}
-        <div className={`flex items-center ${collapsed ? 'justify-center' : 'space-x-2'} px-4 py-5 border-b border-gray-800`}>
-          <FaBox className="text-xl text-blue-500" />
-          {!collapsed && <h1 className="text-white text-lg font-bold">Lumen Logistics</h1>}
+        <div className={`flex items-center ${collapsed ? 'justify-center' : 'space-x-2'} px-4 py-5 border-b border-sidebar-border`}>
+          <FaBox className="text-xl text-primary" />
+          {!collapsed && <h1 className="text-lg font-bold">Lumen Logistics</h1>}
         </div>
 
         {/* Toggle collapse button */}
         <button
           type="button"
           onClick={toggleCollapse}
-          className={`absolute  top-5 ml-3 transform translate-x-1/2  text-white p-1 rounded-full shadow-lg border  hover:bg-gray-700 transition-colors ${collapsed ? "bg-none right-2 border-none" : "bg-gray-800 right-6 border-gray-700"}`}
+          className={`absolute top-5 ml-3 transform translate-x-1/2 text-sidebar-foreground p-1 rounded-full shadow-lg border hover:bg-accent hover:text-accent-foreground transition-colors ${collapsed ? "bg-none right-2 border-none" : "bg-sidebar-accent right-6 border-sidebar-border"}`}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          {collapsed ? <MdKeyboardArrowRight className="text-sm " /> : <MdChevronLeft className="text-sm" />}
+          {collapsed ? <MdKeyboardArrowRight className="text-sm" /> : <MdChevronLeft className="text-sm" />}
         </button>
 
         {/* Navigation */}
@@ -151,11 +152,16 @@ const Sidebar: FC = () => {
             ))}
           </ul>
         </nav>
+
+        {/* Theme Toggle */}
+        <div className={`absolute bottom-4 ${collapsed ? 'left-0 right-0' : 'left-4 right-4'} flex justify-center`}>
+          <ThemeToggle />
+        </div>
       </aside>
 
       {isOpen && (
         <div
-          className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-20"
+          className="md:hidden fixed inset-0 bg-background/80 backdrop-blur-sm z-20"
           onClick={toggleSidebar}
           aria-hidden="true"
         />

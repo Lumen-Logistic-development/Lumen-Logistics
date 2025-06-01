@@ -123,12 +123,12 @@ const AlertList: React.FC = () => {
   ];
 
   return (
-    <section className="flex-1 p-px rounded-lg border border-solid bg-zinc-950 border-zinc-800 shadow-[0px_1px_2px_rgba(0,0,0,0.05)] max-md:w-full max-sm:w-full">
+    <section className="flex-1 rounded-xl bg-card shadow-md text-foreground max-md:w-full max-sm:w-full">
       <header className="p-6">
-        <h2 className="text-2xl font-semibold leading-6 text-neutral-50">
+        <h2 className="text-2xl font-semibold leading-6 text-foreground">
           Production Alerts
         </h2>
-        <p className="text-sm leading-5 text-zinc-400">
+        <p className="text-sm leading-5 text-muted-foreground">
           Recent alerts requiring attention
         </p>
       </header>
@@ -142,7 +142,7 @@ const AlertList: React.FC = () => {
       ))}
 
       <div className="p-6 text-center">
-        <button className="px-0 py-2.5 text-sm font-medium leading-5 rounded-md border border-solid cursor-pointer bg-zinc-950 border-zinc-800 text-neutral-50 w-full">
+        <button className="px-0 py-2.5 text-sm font-medium leading-5 rounded-md border border-border cursor-pointer bg-card text-foreground w-full hover:bg-accent transition">
           View All Alerts
         </button>
       </div>
@@ -158,14 +158,14 @@ interface AlertItemProps {
 const AlertItem: React.FC<AlertItemProps> = ({ alert, isLast }) => {
   return (
     <article
-      className={`flex gap-4 items-start p-4 ${!isLast ? "border-b border-solid border-b-zinc-800" : ""}`}
+      className={`flex gap-4 items-start p-4 ${!isLast ? "border-b border-solid border-border" : ""}`}
     >
       <div>{alert.icon}</div>
       <div className="flex-1">
-        <h3 className="text-sm font-medium leading-4 text-neutral-50">
+        <h3 className="text-sm font-medium leading-4 text-foreground">
           {alert.title}
         </h3>
-        <p className="text-sm leading-5 text-zinc-400">{alert.description}</p>
+        <p className="text-sm leading-5 text-muted-foreground">{alert.description}</p>
         <div className="flex gap-1 items-center mt-1">
           <div>
             <svg
@@ -191,7 +191,7 @@ const AlertItem: React.FC<AlertItemProps> = ({ alert, isLast }) => {
               ></path>
             </svg>
           </div>
-          <time className="text-xs leading-4 text-zinc-400">
+          <time className="text-xs leading-4 text-muted-foreground">
             {alert.timeAgo}
           </time>
         </div>
