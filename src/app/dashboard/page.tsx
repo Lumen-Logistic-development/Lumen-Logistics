@@ -1,10 +1,10 @@
-import DashboardPage from '@/components/Dashboard/Dashboard';
+import DashboardTabs from '@/components/Dashboard/DashboardTabs';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <DashboardPage />
+            <DashboardTabs />
         </div>
     );
 };
