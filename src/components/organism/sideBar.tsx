@@ -16,8 +16,7 @@ import {
   MdMenu,
   MdClose,
   MdChevronLeft,
-  MdKeyboardArrowRight,
-  MdArrowRight
+  MdKeyboardArrowRight
 } from 'react-icons/md';
 import { FaBox } from 'react-icons/fa';
 import { SiBlockchaindotcom } from 'react-icons/si';
