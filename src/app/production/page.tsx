@@ -14,12 +14,12 @@ const ProductionMonitoring: React.FC = () => {
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
       />
-      <main className="flex flex-col p-8 mx-auto my-0 w-full bg-zinc-900 max-w-[2161px] text-neutral-50">
+      <main className="flex flex-col p-8 mx-auto my-0 w-full bg-background max-w-[2161px] text-foreground">
         <header className="mb-6">
-          <h1 className="text-3xl font-bold leading-9 text-white">
+          <h1 className="text-3xl font-bold leading-9 text-foreground">
             Production Monitoring
           </h1>
-          <p className="text-base leading-6 text-zinc-400">
+          <p className="text-base leading-6 text-muted-foreground">
             Track production workflows, monitor quality control, and optimize
             efficiency
           </p>

@@ -56,16 +56,15 @@ const transactions = [
 
 export default function BlockchainTransactions() {
   return (
-    <div className="bg-[#09090B] rounded-2xl p-6 shadow-md ">
-      <h2 className="text-xl font-semibold ">Recent Blockchain Transactions</h2>
-
-      <p className="text-sm text-[#A1A1AA] mb-4">
+    <div className="bg-card rounded-2xl p-6 shadow-md">
+      <h2 className="text-xl font-semibold">Recent Blockchain Transactions</h2>
+      <p className="text-sm text-muted-foreground mb-4">
         Latest transactions recorded on Stellar blockchain
       </p>
       <div className="overflow-x-auto">
         <table className="min-w-full">
           <thead>
-            <tr className="text-gray-400 text-sm">
+            <tr className="text-muted-foreground text-sm">
               <th className="text-left py-2">Transaction ID</th>
               <th className="text-left py-2">Type</th>
               <th className="text-left py-2">Hash</th>
@@ -75,21 +74,19 @@ export default function BlockchainTransactions() {
           </thead>
           <tbody className="text-[11px]">
             {transactions.map((tx) => (
-              <tr key={tx.id} className="border-b border-gray-700 test-sm">
+              <tr key={tx.id} className="border-b border-border test-sm">
                 <td className="py-4">{tx.id}</td>
                 <td className="py-4">
                   {tx.type.split(" ").map((word, index) => (
                     <div key={index}>{word}</div>
                   ))}
                 </td>
-
                 <td className="py-4">{tx.hash}</td>
                 <td className="py-4">
-  {tx.timestamp.split(" ").map((word, index) => (
-    <div key={index}>{word}</div>
-  ))}
-</td>
-
+                  {tx.timestamp.split(" ").map((word, index) => (
+                    <div key={index}>{word}</div>
+                  ))}
+                </td>
                 <td className="py-4">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium
@@ -109,7 +106,7 @@ export default function BlockchainTransactions() {
           </tbody>
         </table>
       </div>
-      <button className="mt-4 w-full py-2 border border-[#27272A] rounded-lg hover:bg-gray-600">
+      <button className="mt-4 w-full py-2 border border-border rounded-lg hover:bg-accent">
         View All Transactions
       </button>
     </div>
