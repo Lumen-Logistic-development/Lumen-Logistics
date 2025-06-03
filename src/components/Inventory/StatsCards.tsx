@@ -33,14 +33,14 @@ export default function StatsCards() {
     return (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {stats.map((item, idx) => (
-          <div key={idx} className="bg-[#09090B] p-6 rounded-2xl shadow">
+          <div key={idx} className="bg-card text-foreground p-6 rounded-2xl shadow">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold">{item.title}</h2>
               {item.icon}
             </div>
   
             <p className="text-3xl font-bold mt-4">{item.value}</p>
-            <p className="text-gray-400 text-sm mt-1">{item.description}</p>
+            <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
           </div>
         ))}
       </div>

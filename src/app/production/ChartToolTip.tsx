@@ -22,7 +22,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = ({
 
   return (
     <div
-      className="absolute z-10 p-2 rounded shadow-lg bg-zinc-800 border border-zinc-700 text-white text-sm"
+      className="absolute z-10 p-2 rounded shadow-lg bg-popover border border-border text-popover-foreground text-sm"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
