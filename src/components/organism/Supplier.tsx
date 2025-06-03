@@ -1,8 +1,8 @@
 import React from 'react'
 import SupplierStatsCards from './StatsCards'
-import { SupplierPerformanceChart } from './SupplierPerformanceChart'
-import { SupplierCategoriesChart } from './SuppliersCategotiesChart'
-import TopSuppliers from './TopSuppliers'
+import { SupplierPerformanceChart } from '../organism/SupplierPerformanceChart'
+import { SupplierCategoriesChart } from '../organism/SuppliersCategotiesChart'
+import TopSuppliers from '../organism/TopSuppliers'
 
 
 const Supplier = () => {

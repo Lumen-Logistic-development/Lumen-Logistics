@@ -1,5 +1,5 @@
 import React from 'react'
-import SupplierTabs from '@/components/Suppliers/SupplierTab'
+import SupplierTabs from '@/components/organism/SupplierTab'
 
 const page = () => {
   return (
