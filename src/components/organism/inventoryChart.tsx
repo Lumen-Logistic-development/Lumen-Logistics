@@ -8,7 +8,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/molecules/select.tsx";
+} from "@/components/molecules/select";
 import {
   Area,
   AreaChart,

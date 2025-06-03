@@ -8,7 +8,7 @@ import StatsCards from "./StatsCards";
 
 export default function Inventory() {
   return (
-    <div className="min-h-screen bg-[#1c1c1e] text-white p-4">
+    <div className="min-h-screen bg-background text-foreground p-4">
       <StatsCards />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">

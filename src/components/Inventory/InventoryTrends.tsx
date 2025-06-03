@@ -22,9 +22,9 @@ const data = [
 
 export default function InventoryTrends() {
   return (
-    <div className="bg-[#09090B] p-6 rounded-2xl shadow w-full">
-      <h2 className="text-xl font-semibold mb-1 text-white">Inventory Trends</h2>
-      <p className="text-sm text-[#A1A1AA] mb-4">Historical inventory levels over time</p>
+    <div className="bg-card text-foreground p-6 rounded-2xl shadow w-full">
+      <h2 className="text-xl font-semibold mb-1 text-foreground">Inventory Trends</h2>
+      <p className="text-sm text-muted-foreground mb-4">Historical inventory levels over time</p>
 
       <div className="w-full h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
