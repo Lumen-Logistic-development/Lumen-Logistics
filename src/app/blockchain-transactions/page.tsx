@@ -1,4 +1,4 @@
-import TransactionPage from '@/components/BlockchainTransactions/BlockchainTransactions'
+import TransactionPage from '@/components/organism/BlockchainTransactions'
 import React from 'react'
 
 function page() {
