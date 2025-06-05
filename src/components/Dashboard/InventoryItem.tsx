@@ -17,9 +17,9 @@ const InventoryItem: FC<InventoryItemProps> = ({ name, status, statusColor, perc
         </div>
         <span className="text-sm">{percentage}%</span>
       </div>
-      <div className="w-full bg-gray-700 h-2 rounded-full">
+      <div className="w-full bg-muted h-2 rounded-full">
         <div
-          className="h-2 rounded-full bg-white"
+          className="h-2 rounded-full bg-foreground"
           style={{ width: `${percentage}%` }}
         ></div>
       </div>

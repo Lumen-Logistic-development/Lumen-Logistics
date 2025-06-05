@@ -22,38 +22,36 @@ export default function InventoryLevels() {
   ];
 
   return (
-    <div className="bg-black p-6 rounded-2xl shadow-md w-full max-w-2xl mx-auto text-white">
-    
+    <div className="bg-card p-6 rounded-2xl shadow-md w-full max-w-2xl mx-auto text-foreground">
       <div className="flex items-start justify-between mb-4">
         <div>
           <h2 className="text-xl font-bold">Inventory Levels</h2>
-          <p className="text-gray-400 text-sm">
+          <p className="text-muted-foreground text-sm">
             Monitor inventory levels across all warehouses
           </p>
         </div>
-        <button className="bg-[#1f1f1f] text-gray-300 text-xs px-3 py-1 rounded-md border border-[#333]">
+        <button className="bg-muted text-muted-foreground text-xs px-3 py-1 rounded-md border border-border">
           Last 7 days ▼
         </button>
       </div>
 
-  
       <div className="w-full h-64">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={data}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
-            <CartesianGrid stroke="#333" strokeDasharray="4 4" />
-            <XAxis dataKey="month" stroke="#888" fontSize={12} />
-            <YAxis stroke="#888" fontSize={12} />
+            <CartesianGrid stroke="hsl(var(--border))" strokeDasharray="4 4" />
+            <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+            <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
             <Tooltip
               contentStyle={{
-                backgroundColor: "#1f1f1f",
+                backgroundColor: "hsl(var(--popover))",
                 borderRadius: "8px",
                 border: "none",
               }}
-              labelStyle={{ color: "#fff" }}
-              itemStyle={{ color: "#fff", fontSize: "12px" }}
+              labelStyle={{ color: "hsl(var(--popover-foreground))" }}
+              itemStyle={{ color: "hsl(var(--popover-foreground))", fontSize: "12px" }}
             />
             <Area
               type="monotone"

@@ -13,7 +13,7 @@ const NavigationTabs: React.FC = () => {
       {tabs.map((tab) => (
         <button
           key={tab}
-          className="px-3 py-1.5 text-sm font-medium leading-5 rounded cursor-pointer bg-zinc-800 text-zinc-400"
+          className="px-3 py-1.5 text-sm font-medium leading-5 rounded cursor-pointer bg-muted text-muted-foreground"
         >
           {tab}
         </button>

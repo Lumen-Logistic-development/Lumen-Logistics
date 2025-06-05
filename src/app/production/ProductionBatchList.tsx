@@ -47,12 +47,12 @@ const ProductionBatchList: React.FC = () => {
   ];
 
   return (
-    <section className="p-px rounded-lg border border-solid bg-zinc-950 border-zinc-800 flex-[2] shadow-[0px_1px_2px_rgba(0,0,0,0.05)] max-md:w-full max-sm:w-full">
+    <section className="rounded-xl bg-card shadow-md text-foreground flex-[2] max-md:w-full max-sm:w-full">
       <header className="p-6">
-        <h2 className="text-2xl font-semibold leading-6 text-neutral-50">
+        <h2 className="text-2xl font-semibold leading-6 text-foreground">
           Active Production Batches
         </h2>
-        <p className="text-sm leading-5 text-zinc-400">
+        <p className="text-sm leading-5 text-muted-foreground">
           Currently running production batches
         </p>
       </header>
@@ -66,7 +66,7 @@ const ProductionBatchList: React.FC = () => {
       ))}
 
       <div className="p-6 text-center">
-        <button className="px-0 py-2.5 text-sm font-medium leading-5 rounded-md border border-solid cursor-pointer bg-zinc-950 border-zinc-800 text-neutral-50 w-full">
+        <button className="px-0 py-2.5 text-sm font-medium leading-5 rounded-md border border-border cursor-pointer bg-card text-foreground w-full hover:bg-accent transition">
           View All Batches
         </button>
       </div>
@@ -82,32 +82,32 @@ interface BatchItemProps {
 const BatchItem: React.FC<BatchItemProps> = ({ batch, isLast }) => {
   return (
     <article
-      className={`p-4 ${!isLast ? "border-b border-solid border-b-zinc-800" : ""}`}
+      className={`p-4 ${!isLast ? "border-b border-solid border-border" : ""}`}
     >
       <div className="flex justify-between items-center mb-2">
         <span className="px-3 py-1 text-xs font-semibold leading-4 bg-emerald-500 rounded-full text-zinc-900">
           {batch.status}
         </span>
-        <h3 className="text-base font-medium leading-6 text-neutral-50">
+        <h3 className="text-base font-medium leading-6 text-foreground">
           {batch.line}
         </h3>
-        <p className="text-sm leading-5 text-zinc-400">
+        <p className="text-sm leading-5 text-muted-foreground">
           Batch: {batch.batchNumber}
         </p>
       </div>
       <div className="flex justify-between mb-1">
-        <p className="text-sm leading-5 text-neutral-50">
+        <p className="text-sm leading-5 text-foreground">
           Product: {batch.product}
         </p>
-        <p className="text-sm leading-5 text-neutral-50">
+        <p className="text-sm leading-5 text-foreground">
           Efficiency: {batch.efficiency}
         </p>
       </div>
       <div className="mb-2">
-        <p className="text-sm leading-5 text-neutral-50">
+        <p className="text-sm leading-5 text-foreground">
           Progress: {batch.progress}%
         </p>
-        <p className="text-sm leading-5 text-neutral-50">
+        <p className="text-sm leading-5 text-foreground">
           {batch.units} / {batch.totalUnits} units
         </p>
         <ProgressBar progress={batch.progress} />
