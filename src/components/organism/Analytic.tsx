@@ -13,8 +13,8 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import AnalyticsOverview from "./AnalyticsOverview";
-import CostAnalysic from "./CostAnalysics";
+import AnalyticsOverview from "../molecules/AnalyticsOverview";
+import CostAnalysic from "../molecules/CostAnalysics";
 
 
 const supplyChainData = [
