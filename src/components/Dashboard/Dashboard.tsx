@@ -48,21 +48,10 @@ const metrics = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground p-6">
+    <div className="min-h-screen bg-[#121212] text-white ">
       {/* Top summary section */}
-      <h1 className="text-2xl font-bold text-foreground mb-2 md:mt-0 mt-10">Dashboard</h1>
-      <p className="text-muted-foreground mb-6">
-        Overview of your supply chain operations and blockchain transactions
-      </p>
+
       <section className="mb-8">
-        <div className="space-x-2 bg-card p-2 rounded-lg inline-block mb-5">
-          <button className="px-4 py-2 text-foreground bg-muted rounded-md">
-            Overview
-          </button>
-          <button className="px-4 py-2 text-muted-foreground">Inventory</button>
-          <button className="px-4 py-2 text-muted-foreground">Production</button>
-          <button className="px-4 py-2 text-muted-foreground">Blockchain</button>
-        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           {metrics.map((metric, index) => (
             <div key={index} className="bg-card rounded-lg shadow p-4">
