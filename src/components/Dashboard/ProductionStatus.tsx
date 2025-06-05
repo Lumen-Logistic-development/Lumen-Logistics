@@ -11,9 +11,9 @@ export default function ProductionStatus() {
   ];
 
   return (
-    <div className="bg-black p-4   rounded-2xl shadow-md w-full mx-auto text-white">
+    <div className="bg-card p-4 rounded-2xl shadow-md w-full mx-auto text-foreground">
       <h2 className="text-xl font-bold mb-1 text-left">Production Status</h2>
-      <p className="text-gray-400 text-xs mb-4 text-left">
+      <p className="text-muted-foreground text-xs mb-4 text-left">
         Current production workflow status
       </p>
       <div className="w-full h-44">
@@ -35,8 +35,8 @@ export default function ProductionStatus() {
               content={({ active, payload }) => {
                 if (active && payload && payload.length) {
                   return (
-                    <div className="bg-[#1f1f1f] p-1 rounded-md shadow-md text-xs">
-                      <p className="text-white">{`${payload[0].name}: ${payload[0].value}%`}</p>
+                    <div className="bg-popover p-1 rounded-md shadow-md text-xs">
+                      <p className="text-popover-foreground">{`${payload[0].name}: ${payload[0].value}%`}</p>
                     </div>
                   );
                 }

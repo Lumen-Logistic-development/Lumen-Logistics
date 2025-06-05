@@ -11,9 +11,9 @@ const inventoryItems = [
 
 const InventoryStatus: FC = () => {
   return (
-    <div className="bg-black rounded-lg p-6">
+    <div className="bg-card rounded-xl p-6 shadow-md">
       <h2 className="text-xl font-semibold mb-1">Inventory Status</h2>
-      <p className="text-sm text-gray-400 mb-6">Critical inventory items status</p>
+      <p className="text-sm text-muted-foreground mb-6">Critical inventory items status</p>
 
       <div className="space-y-5">
         {inventoryItems.map((item, idx) => (
@@ -21,7 +21,7 @@ const InventoryStatus: FC = () => {
         ))}
       </div>
 
-      <button className="mt-6 w-full border border-gray-600 py-2 rounded-md hover:bg-gray-800 transition">
+      <button className="mt-6 w-full border border-border py-2 rounded-md hover:bg-accent transition">
         Manage Inventory
       </button>
     </div>

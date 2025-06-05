@@ -1,9 +1,10 @@
-import InventoryTrends from "./InventoryTrends";
-import RecentMovements from "./RecentMovements";
-import StockAlerts from "./StockAlerts";
-import TopItems from "./TopItems";
-import WarehouseDistribution from "./WarehouseDistribution";
-import InventoryStartCards from "./InventoryStartCards";
+import InventoryTrends from "../molecules/InventoryTrends";
+import StockAlerts from "../molecules/StockAlerts";
+import TopItems from "../molecules/TopItems";
+import WarehouseDistribution from "../molecules/WarehouseDistribution";
+import InventoryStartCards from "../molecules/InventoryStartCards";
+import RecentMovements from "../molecules/RecentMovements";
+
 
 
 export default function Inventory() {

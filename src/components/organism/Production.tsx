@@ -1,10 +1,9 @@
-import OverviewCards from "./ProductionStatCards";
-import TopItems from "./ProductionBatches";
-import ProductionEfficiency from "./ProductionEfficiency";
-import ProductionLineStatus from "./ProductionLineStatus";
-import QualityControlIndicator from "./QualityControlIndicator";
-import ProductionBatches from "./ProductionBatches";
-import EquipmentStatus from "./EquipmentStatus";
+import OverviewCards from "../molecules/ProductionStatCards";
+import TopItems from "../molecules/ProductionBatches";
+import ProductionEfficiency from "../molecules/ProductionEfficiency";
+import ProductionLineStatus from "../molecules/ProductionLineStatus";
+import QualityControlIndicator from "../molecules/QualityControlIndicator";
+import EquipmentStatus from "../molecules/EquipmentStatus";
 
 
 export default function Production() {

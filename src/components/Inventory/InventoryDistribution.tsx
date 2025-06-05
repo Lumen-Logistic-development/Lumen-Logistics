@@ -13,9 +13,9 @@ const COLORS = ["#0EA5E9", "#F43F5E", "#6366F1", "#10B981"];
 
 export default function InventoryDistribution() {
   return (
-    <div className="bg-[#09090B] p-6 rounded-2xl shadow">
+    <div className="bg-card text-foreground p-6 rounded-2xl shadow">
       <h2 className="text-xl font-semibold">Inventory Distribution</h2>
-      <p className="mb-4 text-sm text-[#A1A1AA]">Breakdown by category</p>
+      <p className="mb-4 text-sm text-muted-foreground">Breakdown by category</p>
 
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
@@ -44,7 +44,7 @@ export default function InventoryDistribution() {
               className="inline-block w-3 h-3 rounded-full"
               style={{ backgroundColor: COLORS[index] }}
             />
-            <span className="text-sm text-white">{entry.name}</span>
+            <span className="text-sm text-foreground">{entry.name}</span>
           </div>
         ))}
       </div>

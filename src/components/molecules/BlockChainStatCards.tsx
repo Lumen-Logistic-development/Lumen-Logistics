@@ -49,7 +49,6 @@ export default function BlockchainStatsCards() {
           <div className="flex items-center gap-1 text-sm mt-1">
             <ArrowDownRight className="w-4 h-4 text-red-600" />
             <span className="text-red-600 font-medium">-2.1%</span>
-          
           </div>
           <span className="text-gray-500 text-sm">from last week</span>
         </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import BlockChainTopCards from "./BlockChainStatCards";
-import SmartContractStatus from "./SmartContractStatus";
-import NetworkHealthIndicators from "./NetworkHealthIndicator";
-import VerificationQueue from "./VerificationQueue";
-import SectionCard from "./StartCards";
+import BlockChainTopCards from "../molecules/BlockChainStatCards";
+import SmartContractStatus from "../molecules/SmartContractStatus";
+import NetworkHealthIndicators from "../molecules/NetworkHealthIndicator";
+import VerificationQueue from "../molecules/VerificationQueue";
+import SectionCard from "../molecules/StartCards";
 
 
 

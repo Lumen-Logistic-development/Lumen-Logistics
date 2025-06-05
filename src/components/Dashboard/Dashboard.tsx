@@ -54,15 +54,15 @@ export default function DashboardPage() {
       <section className="mb-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           {metrics.map((metric, index) => (
-            <div key={index} className="bg-black rounded-lg shadow p-4">
+            <div key={index} className="bg-card rounded-lg shadow p-4">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-sm font-medium text-gray-500">
+                <h3 className="text-sm font-medium text-muted-foreground">
                   {metric.title}
                 </h3>
                 {metric.icon}
               </div>
               <div className="flex items-end">
-                <p className="text-2xl font-bold text-gray-800 mr-2">
+                <p className="text-2xl font-bold text-foreground mr-2">
                   {metric.value}
                 </p>
                 <span
@@ -78,15 +78,13 @@ export default function DashboardPage() {
                   {metric.change}
                 </span>
               </div>
-              <p className="text-xs text-gray-500 mt-1">
-                from{" "}
-                {metric.title.includes("Month") ? "last month" : "last week"}
+              <p className="text-xs text-muted-foreground mt-1">
+                from {metric.title.includes("Month") ? "last month" : "last week"}
               </p>
             </div>
           ))}
         </div>
       </section>
-
       {/* Main chart sections */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Inventory and Production charts */}
@@ -94,20 +92,14 @@ export default function DashboardPage() {
           <InventoryLevels />
           <ProductionStatus />
         </div>
-
         {/* Supply Chain Visibility */}
         <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
           <BlockchainTransactions />
-
           <SupplyChainVisibility />
-
-          {/* Blockchain Transactions */}
         </div>
-
         {/* Inventory Status Chart */}
         <div></div>
       </div>
-
       {/* Bottom Alerts/Inventory/Suppliers */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         <AlertsNotifications />

@@ -2,7 +2,7 @@
 
 const InventoryCriticalStatus = () => {
   return (
-    <div className="bg-gray-800 p-4 rounded-lg shadow">
+    <div className="bg-card p-4 rounded-lg shadow">
       <h2 className="text-lg font-semibold mb-4">Inventory Status</h2>
       <div className="space-y-3 text-sm">
         <div className="flex justify-between">
@@ -22,7 +22,7 @@ const InventoryCriticalStatus = () => {
           <span className="text-green-400">Good</span>
         </div>
       </div>
-      <button className="mt-4 w-full bg-gray-700 hover:bg-gray-600 py-2 rounded-lg text-sm">
+      <button className="mt-4 w-full bg-muted hover:bg-accent py-2 rounded-lg text-sm">
         Manage Inventory
       </button>
     </div>

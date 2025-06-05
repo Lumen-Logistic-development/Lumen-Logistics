@@ -64,12 +64,12 @@ const QualityControlChart: React.FC = () => {
   };
 
   return (
-    <section className="flex-1 p-px rounded-lg border border-solid bg-zinc-950 border-zinc-800 shadow-[0px_1px_2px_rgba(0,0,0,0.05)]">
+    <section className="flex-1 rounded-xl bg-card shadow-md text-foreground">
       <header className="p-6">
-        <h2 className="text-2xl font-semibold leading-6 text-neutral-50">
+        <h2 className="text-2xl font-semibold leading-6 text-foreground">
           Quality Control
         </h2>
-        <p className="text-sm leading-5 text-zinc-400">
+        <p className="text-sm leading-5 text-muted-foreground">
           Defect rates by product line
         </p>
       </header>
