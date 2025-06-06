@@ -4,7 +4,7 @@ Lumen Logistics is an innovative solution for companies to efficiently manage in
 
 ## Features
 
-- **Inventory Management**: Streamline the management of your inventory with real-time tracking and updates.
+- **Inventory Management*: Streamline the management of your inventory with real-time tracking and updates.
 - **Production Process Tracking**: Keep track of production stages to ensure efficiency and accountability.
 - **Blockchain-based Authentication**: Leverage blockchain technology to authenticate products and maintain trust in your supply chain.
 - **Smart Contract Integration**: Automate workflows and agreements through smart contracts for seamless operations.
