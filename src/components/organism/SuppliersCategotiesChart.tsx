@@ -1,5 +1,5 @@
 "use client";
-import { Pie, PieChart, Cell, ResponsiveContainer } from "recharts";
+import { Pie, PieChart, Cell } from "recharts";
 import {
   Card,
   CardContent,
@@ -113,7 +113,7 @@ export function SupplierCategoriesChart() {
                   // Adjust positioning based on quadrant for better alignment
                   let adjustedX = x;
                   let adjustedY = y;
-                  let textAnchor = x > cx ? "start" : "end";
+                  const textAnchor = x > cx ? "start" : "end";
 
                   // Fine-tune positioning for each segment
                   if (name === "Components") {
