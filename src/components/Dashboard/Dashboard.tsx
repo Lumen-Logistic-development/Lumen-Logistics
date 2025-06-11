@@ -48,7 +48,7 @@ const metrics = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground p-6">
+    <div className="min-h-screen bg-[#121212] text-white ">
       {/* Top summary section */}
       <h1 className="text-2xl font-bold text-foreground mb-2 md:mt-0 mt-10">
         Dashboard
