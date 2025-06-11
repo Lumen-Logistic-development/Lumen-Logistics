@@ -74,6 +74,7 @@ const config: Config = {
       },
       fontFamily: {
         lato: ["Lato", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },
