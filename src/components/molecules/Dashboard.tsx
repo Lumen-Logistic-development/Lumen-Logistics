@@ -1,19 +1,19 @@
 'use client';
 
-import AlertsNotifications from './AlertsNotifications';
-import BlockchainTransactions from './BlockchainTransactions';
-import InventoryLevels from './InventoryLevels';
-import InventoryStatus from './InventoryStatus';
+import AlertsNotifications from '../atoms/AlertsNotifications';
+import BlockchainTransactions from '../atoms/BlockchainTransactions';
+import InventoryLevels from '../atoms/InventoryLevels';
+import InventoryStatus from '../atoms/InventoryStatus';
 import ProductionStatus from './ProductionStatus';
-import SupplyChainVisibility from './SupplyChainVisibility';
-import TopSuppliers from './TopSuppliers';
+import SupplyChainVisibility from '../organism/SupplyChainVisibility';
+import TopSuppliers from '../atoms/TopSuppliers';
 import {
   MdInventory,
   MdProductionQuantityLimits,
   MdLocalShipping,
 } from 'react-icons/md';
 import { SiBlockchaindotcom } from 'react-icons/si';
-import DashboardMetrics from './DashboarMetrics';
+import DashboardMetrics from '../atoms/DashboarMetrics';
 
 const metrics = [
   {

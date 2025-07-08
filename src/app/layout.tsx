@@ -1,16 +1,12 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// import { GeistSans, GeistMono } from "geist/font";
 import Sidebar from "../components/organism/sideBar";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
-import { AppSidebar } from "@/components/app-sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
-// const geistSans = GeistSans;
-// const geistMono = GeistMono;
 
 export const metadata: Metadata = {
   title: "Lumen Logistics - Blockchain Integration",
