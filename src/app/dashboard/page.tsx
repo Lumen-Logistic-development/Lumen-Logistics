@@ -1,4 +1,4 @@
-import DashboardTabs from '@/components/Dashboard/DashboardTabs';
+import DashboardTabs from '@/components/molecules/DashboardTabs';
 import React from 'react';
 
 const page = () => {
