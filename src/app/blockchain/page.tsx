@@ -1,5 +1,5 @@
-import { BlockchainDashboard } from "@/components/blockchain-dashboard"
+import { Blockchain } from "../../components/Blockchain/Blockchain";
 
 export default function BlockchainPage() {
-  return <BlockchainDashboard />
+  return <Blockchain />;
 }
