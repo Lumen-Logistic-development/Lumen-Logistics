@@ -1,6 +1,10 @@
+"use client";
+import { useState } from "react";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar, Download, Share2 } from "lucide-react";
 
 export default function AnalyticsHeader() {
+  const [activeTab, setActiveTab] = useState("overview");
   return (
     <div className="bg-white">
       {/* Header & Description */}
@@ -40,29 +44,23 @@ export default function AnalyticsHeader() {
       </div>
 
       {/* Tabs */}
-      <div className="bg-gray-50 rounded-md  p-2 overflow-x-auto whitespace-nowrap  gap-2 mb-4 inline-flex">
-        <button className="text-sm font-medium text-black bg-white border border-gray-200 px-3 py-1 rounded shadow-sm">
-          Overview
-        </button>
-        <button className="text-sm font-medium text-gray-500 hover:text-blue-600 px-3 py-1">
-          Inventory
-        </button>
-        <button className="text-sm font-medium text-gray-500 hover:text-blue-600 px-3 py-1">
-          Suppliers
-        </button>
-        <button className="text-sm font-medium text-gray-500 hover:text-blue-600 px-3 py-1">
-          Costs
-        </button>
+      <div className="font-inter pb-6">
+        <Tabs
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="space-y-6"
+        >
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="shipment">Shipment</TabsTrigger>
+            <TabsTrigger value="tracking">Tracking</TabsTrigger>
+            <TabsTrigger value="carriers">Carriers</TabsTrigger>
+          </TabsList>
+        </Tabs>
       </div>
     </div>
   );
 }
-
-
-
-
-
-
 
 // import { Calendar, Download, Share2 } from "lucide-react";
 

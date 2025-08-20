@@ -2,26 +2,10 @@
 
 import { useState } from "react";
 import Supplier from "./Supplier";
-
-const tabs = ["Overview", "Suppliers", "Performance", "Contracts"];
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const SupplierTabs = () => {
   const [activeTab, setActiveTab] = useState("Overview");
-
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case "Overview":
-        return <Supplier/>;
-      case "Suppliers":
-        return <h1>Suppliers</h1>;
-      case "Performance":
-        return <h1>Performance</h1>;
-      case "Contracts":
-        return <h1>Contracts</h1>;
-      default:
-        return null;
-    }
-  };
 
   return (
     <div className="bg-[#121212] text-white min-h-screen p-6  ">
@@ -34,24 +18,20 @@ const SupplierTabs = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex flex-wrap gap-2 bg-[#1f1f22] p-3 rounded-lg  mb-6 w-full md:max-w-[450px] max-w-[600px]">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium transition ${
-              activeTab === tab
-                ? "bg-[#09090B] text-white"
-                : "text-gray-400 hover:bg-[#09090B] hover:text-white"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
+      <div className="font-inter">
+        <Tabs
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="space-y-6"
+        >
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="shipment">Shipment</TabsTrigger>
+            <TabsTrigger value="tracking">Tracking</TabsTrigger>
+            <TabsTrigger value="carriers">Carriers</TabsTrigger>
+          </TabsList>
+        </Tabs>
       </div>
-
-      {/* Dynamic content */}
-      <div className="mt-6">{renderTabContent()}</div>
     </div>
   );
 };
