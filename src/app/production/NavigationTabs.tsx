@@ -1,24 +1,25 @@
+"use client";
+import { useState } from "react";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 
 const NavigationTabs: React.FC = () => {
-  const tabs = [
-    "Overview",
-    "Production Lines",
-    "Quality Control",
-    "Maintenance",
-  ];
-
+  const [activeTab, setActiveTab] = useState("overview");
   return (
-    <nav className="flex gap-4 mb-6 max-sm:hidden">
-      {tabs.map((tab) => (
-        <button
-          key={tab}
-          className="px-3 py-1.5 text-sm font-medium leading-5 rounded cursor-pointer bg-muted text-muted-foreground"
-        >
-          {tab}
-        </button>
-      ))}
-    </nav>
+    <div className="font-inter">
+      <Tabs
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="space-y-6"
+      >
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="shipment">Shipment</TabsTrigger>
+          <TabsTrigger value="tracking">Tracking</TabsTrigger>
+          <TabsTrigger value="carriers">Carriers</TabsTrigger>
+        </TabsList>
+      </Tabs>
+    </div>
   );
 };
 

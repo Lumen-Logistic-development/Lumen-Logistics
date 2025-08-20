@@ -5,8 +5,6 @@ import WarehouseDistribution from "../molecules/WarehouseDistribution";
 import InventoryStartCards from "../molecules/InventoryStartCards";
 import RecentMovements from "../molecules/RecentMovements";
 
-
-
 export default function Inventory() {
   return (
     <div className=" bg-[#121212] min-h-screen space-y-6">
@@ -23,5 +21,5 @@ export default function Inventory() {
         <RecentMovements />
       </div>
     </div>
-  )
+  );
 }
